@@ -48,6 +48,7 @@ module RGeo
           DATABASE_CONFIG_PATH = ::File.dirname(__FILE__)+'/database.yml'
 
           def self.before_open_database(params_)
+            params_[:config].symbolize_keys!
             database_ = params_[:config][:database]
             dir_ = ::File.dirname(database_)
             ::FileUtils.mkdir_p(dir_) unless dir_ == '.'
